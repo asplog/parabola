@@ -117,4 +117,4 @@ unset parametric
 #Print answers
 print(sprintf('F(%f m,%f m)',fx,fy));
 print(sprintf('Q(%f m,%f m)',qx,qy));
-
+pause -1
