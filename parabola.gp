@@ -10,13 +10,13 @@
 reset
 
 #definition
-F=-0.25; #Focal point
-xi=4*F;
+f=-0.25; #Focal point
+xi=4*f;
 phi=pi*6/180.0;	#Diffusion angle [rad]
 l=-1.0; #Distance between loudspeaker and parabola [m]
 d=0.2; #Radius of loudspeaker [m]
-Q = 'Q'; Label for Q
-F = 'F'; Label for F
+Q = 'Q'; #Label for Q
+F = 'F'; #Label for F
 #solve
 #P=(px,py) is the intersection point
 px=0!=phi?(-(2*tan(phi)*(d/2.0-l*tan(phi))-xi)+sqrt((2*tan(phi)*(d/2.0-l*tan(phi))-xi)**2-4*(tan(phi)**2)*((d/2.0-l*tan(phi))**2)))/(2*(tan(phi)**2)):d**2/4.0/xi;
@@ -52,7 +52,7 @@ qx=px-py/tan(phi+2*psi);
 qy=0.0;
 
 ##Focal point
-fx=F;
+fx=f;
 fy=0.0;
 
 #visualize
@@ -107,7 +107,7 @@ set parametric;
 set trange [-1:1];
 
 plot py*py*t*t/xi,py*t notitle with filledcurve lt rgb '#ffff80';##Emitted area
-replot py*py*t*t/xi,py*t t 'parabola' lt rgb '#ff4040' lw 2;##Parabola
+replot (py+d/2)**2*t*t/xi,(py+d/2)*t t 'parabola' lt rgb '#ff4040' lw 2;##Parabola
 replot px+tx*(tl*1.0*(t-0)),py+ty*(tl*1.0*(t-0)) t 'tangent'   lt rgb '#ff8000' lw 2;##Tangent
 replot px+nx*(nl*0.5*(t-1)),py+ny*(nl*0.5*(t-1)) t 'normal'     lt rgb '#c0c000' lw 2;##Normal
 replot px+ix*(il*0.5*(t-1)),py+iy*(il*0.5*(t-1)) t 'incidence'  lt rgb '#40ff40' lw 2;##Direction of incident wave
