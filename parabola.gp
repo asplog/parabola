@@ -17,6 +17,7 @@ l=-1.0; #Distance between loudspeaker and parabola [m]
 d=0.2; #Radius of loudspeaker [m]
 Q = 'Q'; #Label for Q
 F = 'F'; #Label for F
+
 #solve
 #P=(px,py) is the intersection point
 px=0!=phi?(-(2*tan(phi)*(d/2.0-l*tan(phi))-xi)+sqrt((2*tan(phi)*(d/2.0-l*tan(phi))-xi)**2-4*(tan(phi)**2)*((d/2.0-l*tan(phi))**2)))/(2*(tan(phi)**2)):d**2/4.0/xi;
