@@ -10,16 +10,16 @@
 reset
 
 #definition
-f=-0.25; #Focal point
-xi=4*f;
-phi=pi*6/180.0;	#Diffusion angle [rad]
-l=-1.0; #Distance between loudspeaker and parabola [m]
-d=0.2; #Radius of loudspeaker [m]
-Q = 'Q'; #Label for Q
-F = 'F'; #Label for F
+if(!exists('f'))f=-1.0; #Focal point
+if(!exists('phi'))phi=pi*6/180.0;	#Diffusion angle [rad]
+if(!exists('l'))l=-6.0; #Distance between loudspeaker and parabola [m]
+if(!exists('d'))d= 0.25; #Radius of loudspeaker [m]
+if(!exists('Q'))Q = 'Q'; #Label for Q
+if(!exists('F'))F = 'F'; #Label for F
 
 #solve
 #P=(px,py) is the intersection point
+xi=4*f;
 px=0!=phi?(-(2*tan(phi)*(d/2.0-l*tan(phi))-xi)+sqrt((2*tan(phi)*(d/2.0-l*tan(phi))-xi)**2-4*(tan(phi)**2)*((d/2.0-l*tan(phi))**2)))/(2*(tan(phi)**2)):d**2/4.0/xi;
 py=tan(phi)*(px-l)+d/2.0;
 
@@ -70,6 +70,7 @@ set yrange [-py-2*d:py+2*d];
 ##Labels
 set xlabel 'space [m]'
 set ylabel 'space [m]'
+set key left top;
 
 ##Drawing environment
 ##Draw loudspeaker
@@ -108,6 +109,7 @@ set parametric;
 set trange [-1:1];
 
 plot py*py*t*t/xi,py*t notitle with filledcurve lt rgb '#ffff80';##Emitted area
+replot l-l*0.5*(t+1),0 notitle lt rgb '#f0f040' lw 1;#axis
 replot (py+d/2)**2*t*t/xi,(py+d/2)*t t 'parabola' lt rgb '#ff4040' lw 2;##Parabola
 replot px+tx*(tl*1.0*(t-0)),py+ty*(tl*1.0*(t-0)) t 'tangent'   lt rgb '#ff8000' lw 2;##Tangent
 replot px+nx*(nl*0.5*(t-1)),py+ny*(nl*0.5*(t-1)) t 'normal'     lt rgb '#c0c000' lw 2;##Normal
@@ -118,4 +120,4 @@ unset parametric
 #Print answers
 print(sprintf('F(%f m,%f m)',fx,fy));
 print(sprintf('Q(%f m,%f m)',qx,qy));
-pause -1
+pause -1;
