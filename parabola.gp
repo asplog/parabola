@@ -10,9 +10,9 @@
 reset
 
 #definition
-if(!exists('f'))f=-1.0; #Focal point
-if(!exists('phi'))phi=pi*6/180.0;	#Diffusion angle [rad]
-if(!exists('l'))l=-6.0; #Distance between loudspeaker and parabola [m]
+if(!exists('f'))f=-0.25; #Focal point
+if(!exists('phi'))phi=pi*6/180.0; #Diffusion angle [rad]
+if(!exists('l'))l=-2.0; #Distance between loudspeaker and parabola [m]
 if(!exists('d'))d= 0.25; #Radius of loudspeaker [m]
 if(!exists('Q'))Q = 'Q'; #Label for Q
 if(!exists('F'))F = 'F'; #Label for F
